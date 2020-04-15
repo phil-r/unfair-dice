@@ -1,0 +1,31 @@
+{
+  "name": "unfair-dice",
+  "version": "0.0.1",
+  "description": "Dice that protects you from time travelers!",
+  "keywords": [
+    "dice",
+    "unfair",
+    "fair",
+    "random",
+    "coin",
+    "flip",
+    "roll"
+  ],
+  "bugs": {
+    "url": "https://github.com/phil-r/unfair-dice/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phil-r/unfair-dice.git"
+  },
+  "homepage": "https://github.com/phil-r/unfair-dice#readme",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "author": "Phil Rukin <philipp@rukin.me> (https://rukin.me)",
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^3.7.0"
+  }
+}
