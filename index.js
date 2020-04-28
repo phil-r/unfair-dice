@@ -17,7 +17,7 @@ function _create(state) {
       return decider[next] > decider[current] ? next : current;
     });
 
-    console.log('Decider:', decider, '\nResult:', result);
+    // console.log('Decider:', decider, '\nResult:', result);
 
     state.rolls[result]++;
     state.total++;
