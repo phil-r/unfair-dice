@@ -1,0 +1,10 @@
+# Dist needs to be included
+!dist
+
+# Test files and configs don't need to be included
+.user
+*test.ts
+*test.d.ts
+*.test.js
+tsconfig.json
+tsconfig.cjs.json
