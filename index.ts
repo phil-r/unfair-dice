@@ -22,7 +22,8 @@ function _create<T>(state: State<T>): Dice<T> {
 
   function roll(): T {
     const decider = state.sides.reduce((acc, i) => {
-      const share = (state.rolls[String(i)] + 1) / (state.total + state.sides.length);
+      const share =
+        (state.rolls[String(i)] + 1) / (state.total + state.sides.length);
       acc[String(i)] = Math.random() / share;
       return acc;
     }, {} as Record<string, number>);
@@ -51,17 +52,23 @@ function _create<T>(state: State<T>): Dice<T> {
   };
 }
 
+/**
+ * Creates a dice that becomes increasingly unfair the more it's rolled,
+ * favoring sides that have been rolled less frequently.
+ * @param n - Number of sides (creates [0,1,...,n-1]) or array of side values
+ * @returns A dice object with roll, flip, etc. methods
+ */
 function createDice<T = number>(n: number | T[]): Dice<T> {
   let sides: T[] = [];
-  if (typeof n === 'number') {
+  if (typeof n === "number") {
     if (n < 2) {
-      throw new Error('Only numbers bigger than 1 are allowed');
+      throw new Error("Only numbers bigger than 1 are allowed");
     }
-    sides = Array.from({ length: n }, (_, i) => i) as T[];
+    sides = Array.from({ length: n }, (_, i) => i as T);
   } else if (Array.isArray(n)) {
     sides = [...n];
   } else {
-    throw new TypeError('Only numbers and arrays are allowed');
+    throw new TypeError("Only numbers and arrays are allowed");
   }
 
   const state: State<T> = {
@@ -75,10 +82,20 @@ function createDice<T = number>(n: number | T[]): Dice<T> {
   return _create(state);
 }
 
+/**
+ * Recreates a dice from a saved state.
+ * @param state - The state object from getState()
+ * @returns A dice object restored to the given state
+ */
 function createFromState<T>(state: State<T>): Dice<T> {
   return _create({ ...state });
 }
 
+/**
+ * Creates a coin (2-sided dice) that becomes unfair over time.
+ * @returns A coin object with flip, roll, etc. methods
+ */
 const createCoin = (): Dice<number> => createDice(2);
 
 export { createCoin, createDice, createFromState };
+export type { State, Dice };
