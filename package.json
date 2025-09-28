@@ -19,15 +19,25 @@
     "url": "git+https://github.com/phil-r/unfair-dice.git"
   },
   "homepage": "https://github.com/phil-r/unfair-dice#readme",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
   "scripts": {
     "test": "bun test",
-    "build": "tsc",
+    "build": "tsc -p tsconfig.cjs.json && mv dist/cjs/index.js dist/index.cjs && rm -rf dist/cjs && tsc",
     "typecheck": "tsc --noEmit"
   },
   "author": "Phil Rukin <philipp@rukin.me> (https://rukin.me)",
   "license": "MIT",
+  "engines": {
+    "bun": "^1.2.2"
+  },
+  "packageManager": "bun@1.2.2",
   "devDependencies": {
     "typescript": "^5.9.2"
   }

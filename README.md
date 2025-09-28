@@ -16,6 +16,14 @@ const coin = createCoin(); // or createDice(2)
 console.log(coin.flip()); // 0 or 1
 ```
 
+or using CommonJS:
+
+```js
+const { createCoin } = require('unfair-dice');
+const coin = createCoin(); // or createDice(2)
+console.log(coin.flip()); // 0 or 1
+```
+
 or using array:
 
 ```js
@@ -36,6 +44,17 @@ console.log(d6.roll()); // 0, 1, 2, 3, 4 or 5
 
 ```js
 import { createDice, createFromState } from 'unfair-dice';
+const d6 = createDice(6);
+d6.roll();
+// ...
+const saveState = d6.getState(); // save it somewhere as json, etc..
+const d6Clone = createFromState(saveState); // recover it from state
+```
+
+or using CommonJS:
+
+```js
+const { createDice, createFromState } = require('unfair-dice');
 const d6 = createDice(6);
 d6.roll();
 // ...
