@@ -10,8 +10,8 @@
     "exactOptionalPropertyTypes": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": ["bun"]
   },
-  "include": ["index.ts"],
-  "exclude": ["main.test.ts"]
+  "include": ["**/*.ts"],
 }

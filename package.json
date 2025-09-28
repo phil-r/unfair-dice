@@ -28,7 +28,7 @@
     }
   },
   "scripts": {
-    "test": "bun test",
+    "test": "bun test --randomize",
     "build": "tsc -p tsconfig.cjs.json && mv dist/cjs/index.js dist/index.cjs && rm -rf dist/cjs && tsc",
     "typecheck": "tsc --noEmit"
   },
@@ -39,6 +39,7 @@
   },
   "packageManager": "bun@1.2.2",
   "devDependencies": {
+    "@types/bun": "^1.2.22",
     "typescript": "^5.9.2"
   }
 }
