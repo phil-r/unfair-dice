@@ -19,13 +19,16 @@
     "url": "git+https://github.com/phil-r/unfair-dice.git"
   },
   "homepage": "https://github.com/phil-r/unfair-dice#readme",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "ava"
+    "test": "bun test",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
   },
   "author": "Phil Rukin <philipp@rukin.me> (https://rukin.me)",
   "license": "MIT",
   "devDependencies": {
-    "ava": "^3.7.0"
+    "typescript": "^5.9.2"
   }
 }

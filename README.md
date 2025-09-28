@@ -11,7 +11,7 @@ To solve this problem (un)fair dice was invented! It keeps track of every roll a
 ## Usage
 
 ```js
-const { createCoin } = require('unfair-dice');
+import { createCoin } from 'unfair-dice';
 const coin = createCoin(); // or createDice(2)
 console.log(coin.flip()); // 0 or 1
 ```
@@ -19,7 +19,7 @@ console.log(coin.flip()); // 0 or 1
 or using array:
 
 ```js
-const { createDice } = require('unfair-dice');
+import { createDice } from 'unfair-dice';
 const coin = createDice(['heads', 'tails']);
 console.log(coin.flip()); // heads or tails
 ```
@@ -27,7 +27,7 @@ console.log(coin.flip()); // heads or tails
 or create a d6:
 
 ```js
-const { createDice } = require('unfair-dice');
+import { createDice } from 'unfair-dice';
 const d6 = createDice(6);
 console.log(d6.roll()); // 0, 1, 2, 3, 4 or 5
 ```
@@ -35,7 +35,7 @@ console.log(d6.roll()); // 0, 1, 2, 3, 4 or 5
 ## State
 
 ```js
-const { createDice, createFromState } = require('unfair-dice');
+import { createDice, createFromState } from 'unfair-dice';
 const d6 = createDice(6);
 d6.roll();
 // ...
