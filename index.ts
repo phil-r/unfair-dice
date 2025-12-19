@@ -67,6 +67,9 @@ function createDice<T = number>(n: number | T[]): Dice<T> {
     sides = Array.from({ length: n }, (_, i) => i as T);
   } else if (Array.isArray(n)) {
     sides = [...n];
+    if (sides.length === 0) {
+      throw new Error("can't have dice with no sides");
+    }
   } else {
     throw new TypeError("Only numbers and arrays are allowed");
   }
@@ -88,6 +91,10 @@ function createDice<T = number>(n: number | T[]): Dice<T> {
  * @returns A dice object restored to the given state
  */
 function createFromState<T>(state: State<T>): Dice<T> {
+  if (state.sides.length === 0) {
+    throw new Error("can't have dice with no sides");
+  }
+
   return _create({
     sides: [...state.sides],
     rolls: { ...state.rolls },

@@ -49,8 +49,7 @@ test('Create dice with array', () => {
 test('Error cases', () => {
   expect(() => createDice(1)).toThrow('Only numbers bigger than 1 are allowed');
   expect(() => createDice('invalid' as any)).toThrow('Only numbers and arrays are allowed');
-  const empty = createDice([]);
-  expect(() => empty.roll()).toThrow(); // Empty sides cause error in roll
+  expect(() => createDice([])).toThrow("can't have dice with no sides");
 });
 
 test('Large dice', () => {
@@ -96,4 +95,13 @@ test('createFromState should not mutate original state', () => {
   expect(originalState.total).toBe(15);
   expect(originalState.rolls['0']).toBe(10);
   expect(originalState.rolls['1']).toBe(5);
+});
+
+test('createFromState should reject state with empty sides', () => {
+  const emptyState = {
+    sides: [],
+    rolls: {},
+    total: 0
+  };
+  expect(() => createFromState(emptyState)).toThrow("can't have dice with no sides");
 });
