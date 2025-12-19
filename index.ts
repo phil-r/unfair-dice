@@ -88,7 +88,11 @@ function createDice<T = number>(n: number | T[]): Dice<T> {
  * @returns A dice object restored to the given state
  */
 function createFromState<T>(state: State<T>): Dice<T> {
-  return _create({ ...state });
+  return _create({
+    sides: [...state.sides],
+    rolls: { ...state.rolls },
+    total: state.total,
+  });
 }
 
 /**

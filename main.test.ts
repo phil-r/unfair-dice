@@ -74,3 +74,26 @@ test('Create from state with strings', () => {
   expect(dice.roll()).toBe('B'); // B has lowest rolls, should be favored
   expect(dice.getState().total).toBe(200001);
 });
+
+test('createFromState should not mutate original state', () => {
+  const originalState = {
+    sides: [0, 1],
+    rolls: { '0': 10, '1': 5 },
+    total: 15
+  };
+  
+  // Create first dice and roll it
+  const dice1 = createFromState(originalState);
+  dice1.roll(); // This mutates internal state
+  
+  // Create second dice from same original state
+  const dice2 = createFromState(originalState);
+  
+  // Second dice should have original state, not mutated by first
+  expect(dice2.getState()).toEqual(originalState);
+  
+  // Let's also check that the originalState object itself wasn't mutated
+  expect(originalState.total).toBe(15);
+  expect(originalState.rolls['0']).toBe(10);
+  expect(originalState.rolls['1']).toBe(5);
+});
